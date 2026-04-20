@@ -1,5 +1,6 @@
 import "./globals.css";
 import { MainNavbar } from "../components/navbar";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function RootLayout({
   children,
@@ -13,6 +14,7 @@ export default function RootLayout({
           <MainNavbar />
         </header>
         <main className="flex-grow">{children}</main>
+        <SpeedInsights />
         <footer className="min-h-[400px] bg-[#1A1A1A] text-white w-full mt-20 border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
             {/* Columna 1: Logo o Marca */}
