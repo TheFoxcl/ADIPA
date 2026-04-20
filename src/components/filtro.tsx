@@ -7,14 +7,16 @@ interface FiltroCategoriasProps {
   onSelectionChange: (val: string[]) => void;
   categorias: string[];
   filterName?: string;
+  value?: string[];
 }
 
 export const FiltroCategorias = ({
   onSelectionChange,
   categorias,
   filterName,
+  value,
 }: FiltroCategoriasProps) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="w-full border-b border-gray-100 pb-2 ">
@@ -38,16 +40,17 @@ export const FiltroCategorias = ({
         }`}
       >
         <CheckboxGroup
+          value={value}
           onChange={(valores) => {
             onSelectionChange(valores);
           }}
-          className="flex flex-col gap-3"
+          className="flex flex-col gap-3 mt-0 w-[90%]"
         >
           {categorias.map((categoria) => (
             <Checkbox
               key={categoria}
               value={categoria}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 pt-1 border-t border-t-gray-200"
               aria-label={`Check para filtrar por ${categoria}`}
             >
               <Checkbox.Control
@@ -59,7 +62,7 @@ export const FiltroCategorias = ({
                 />
               </Checkbox.Control>
               <Checkbox.Content aria-label={`${categoria}`}>
-                <Label htmlFor="label-filter" className="text-black">
+                <Label htmlFor="label-filter" className="text-black mt-0">
                   {categoria}
                 </Label>
               </Checkbox.Content>

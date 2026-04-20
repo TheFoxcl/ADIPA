@@ -47,47 +47,55 @@ export const cursosDisponibles = [
     modalidad: "En vivo",
   },
   {
-    id: "Cli2",
+    id: "infantil1",
     title:
-      "Ver detalles del curso: Curso: Trauma Infantil en procesos judiciales: Estrategias terapéuticas efectivas",
+      "Diplomado en Psicología Educacional: Convivencia escolar, gestión integral de aulas inclusivas y A.M.A.R.-E",
+    categoria: "Psicología infantil",
+    fechaInicio: "21/8/2026",
+    precio: 500000,
+    descuento: 0.2,
+    rating: 5,
+    imagen: "/infantil1.webp",
+    imagenAlt:
+      "Imagen del curso de Diplomado en Psicología Educacional: Convivencia escolar, gestión integral de aulas inclusivas y A.M.A.R.-E",
+    modalidad: "En vivo",
+  },
+  {
+    id: "Neu4",
+    title:
+      "Diplomado en Clínica, Técnica y Teoría Psicoanalítica en la Obra de Sigmund Freud",
+    categoria: "Neurociencias",
+    fechaInicio: "01/05/2026",
+    precio: 500000,
+    imagen: "/Neruro4.webp",
+    imagenAlt:
+      "Imagen del curso Diplomado en Clínica, Técnica y Teoría Psicoanalítica en la Obra de Sigmund Freud",
+    modalidad: "online",
+  },
+  {
+    id: "infantil2",
+    title:
+      "Certificación en Escala Wechsler de Inteligencia para Niños, quinta edición (WISC-V), nivel inicial, intermedio y avanzado",
     categoria: "Psicología infantil",
     fechaInicio: "28/09/2026",
-    precio: 30000,
-    imagen: "/clinica1.webp",
-    imagenAlt: "Imagen del curso de Espectro del Autismo",
+    precio: 300000,
+    descuento: 0.3,
+    rating: 4,
+    imagen: "/infantil2.webp",
+    imagenAlt:
+      "Imagen del Certificación en Escala Wechsler de Inteligencia para Niños, quinta edición (WISC-V), nivel inicial, intermedio y avanzado",
     modalidad: "En vivo",
   },
   {
-    id: "Cli3",
+    id: "infantil3",
     title:
-      "Ver detalles del curso: Curso: Trauma Infantil en procesos judiciales: Estrategias terapéuticas efectivas",
-    categoria: "Clinica",
+      "Curso: Temperamento infantil: Una mirada integrativa en el razonamiento clínico de la primera infancia",
+    categoria: "Psicología infantil",
     fechaInicio: "28/09/2026",
-    precio: 30000,
-    imagen: "/clinica1.webp",
-    imagenAlt: "Imagen del curso de Espectro del Autismo",
-    modalidad: "En vivo",
-  },
-  {
-    id: "Cli4",
-    title:
-      "Ver detalles del curso: Curso: Trauma Infantil en procesos judiciales: Estrategias terapéuticas efectivas",
-    categoria: "Clinica",
-    fechaInicio: "28/09/2026",
-    precio: 30000,
-    imagen: "/clinica1.webp",
-    imagenAlt: "Imagen del curso de Espectro del Autismo",
-    modalidad: "En vivo",
-  },
-  {
-    id: "Cli5",
-    title:
-      "Ver detalles del curso: Curso: Trauma Infantil en procesos judiciales: Estrategias terapéuticas efectivas",
-    categoria: "Clinica",
-    fechaInicio: "28/09/2026",
-    precio: 30000,
-    imagen: "/clinica1.webp",
-    imagenAlt: "Imagen del curso de Espectro del Autismo",
+    precio: 200000,
+    imagen: "/infantil3.webp",
+    imagenAlt:
+      "Imagen del Curso: Temperamento infantil: Una mirada integrativa en el razonamiento clínico de la primera infancia",
     modalidad: "En vivo",
   },
 ];

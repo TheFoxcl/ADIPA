@@ -7,9 +7,12 @@ import Image from "next/image";
 import { SearchField } from "@heroui/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Botonera } from "./botonera";
+import { useCart } from "@/context/CartContext";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { setIsCartOpen, carrito } = useCart();
 
   const navLinks = [
     { name: "iniciar sesion", href: "/" },
@@ -17,8 +20,21 @@ export const MainNavbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full  backdrop-blur-md mt-2 sticky top-0">
-      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between">
+    <nav className="sticky top-0 z-50 w-full  backdrop-blur-md mt-2 sticky top-0 md:mx-4 xs:mx-4">
+      <div className="mx-auto flex h-16 max-w-[1280px] items-center  lg:justify-between justify-center gap-10">
+        <div className="flex lg:hidden items-center">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? (
+              <XMarkIcon className="w-8 h-8 transition-all duration-300 rotate-0" />
+            ) : (
+              <Bars3Icon className="w-8 h-8 transition-all duration-300" />
+            )}
+          </button>
+        </div>
         <div className="flex items-center cursor-pointer display-block">
           <Image
             src="https://storage.googleapis.com/statics-files-adipa-cl/dist_compress/dist/img/icons/logo-adipa.svg"
@@ -30,30 +46,31 @@ export const MainNavbar = () => {
         <SearchField
           name="buscador"
           aria-label="Buscador de cursos y proyectos"
+          className="flex justify-end"
         >
           <SearchField.Group
-            className="flex items-center gap-2 
-            border border-solid border-primary
-            rounded-lg bg-white
+            className="flex items-center 
+            border border-solid border-primary bg-white
             focus-within:ring-2 focus-within:ring-primary 
-            transition-all duration-300"
+            transition-all duration-300
+            rounded-full lg:rounded-lg 
+            w-fit"
           >
             <SearchField.Input
               aria-required="false"
-              className="w-full md:w-[400px] px-4 py-2"
               placeholder="¿Qué quieres aprender?"
+              className="hidden lg:block w-[400px] px-4 py-2 outline-none text-black bg-transparent"
             />
+
             <button
               type="submit"
               aria-label="Buscar"
-              className="bg-primary text-white w-full md:w-12 h-full m-0 cursor-pointer flex items-center transition-colors hover:bg-primary/90"
+              className="bg-primary text-white cursor-pointer flex items-center justify-center transition-colors hover:bg-primary/90 w-10 h-10 rounded-full lg:w-12 lg:h-full lg:rounded-none lg:m-0"
             >
-              <SearchField.SearchIcon className="text-white w-5 h-5" />
+              <SearchField.SearchIcon className="text-white w-5 h-5 ml-0" />
             </button>
           </SearchField.Group>
         </SearchField>
-
-        {/* Desktop Links (1280px+) & Tablet (768px+) */}
         <div className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
             <Button
@@ -63,54 +80,37 @@ export const MainNavbar = () => {
               {link.name}
             </Button>
           ))}
-          <Button className="w-full bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors duration-300 ease-in-outrounded-none px-4 py-2">
-            <ShoppingCartIcon className="w-7 h-7" />
-          </Button>
-        </div>
-
-        {/* Mobile Button (375px) */}
-        <div className="flex md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-foreground focus:outline-none"
-            aria-label="Toggle Menu"
+          <Button
+            className="w-full bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors duration-300 ease-in-outrounded-none px-4 py-2"
+            onClick={() => setIsCartOpen(true)}
           >
-            {/* Simple Icono Hamburguesa */}
-            <div className="space-y-1.5">
-              <span
-                className={`block h-0.5 w-6 bg-current transition-transform ${isOpen ? "rotate-45 translate-y-2" : ""}`}
-              />
-              <span
-                className={`block h-0.5 w-6 bg-current transition-opacity ${isOpen ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`block h-0.5 w-4 bg-current transition-transform ${isOpen ? "-rotate-45 -translate-y-2 w-6" : ""}`}
-              />
-            </div>
-          </button>
+            <ShoppingCartIcon className="w-7 h-7" />
+            {carrito.length}
+          </Button>
         </div>
       </div>
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between">
         <Botonera />
       </div>
 
-      {/* Mobile Menu Dropdown */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64 border-b border-divider" : "max-h-0"}`}
       >
-        <div className="flex flex-col gap-4 p-6 bg-background">
+        <div className="flex flex-col gap-3 p-6 bg-background items-center justify-center">
           {navLinks.map((link) => (
-            <Link
+            <Button
               key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="text-lg font-medium"
+              className="bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors duration-300 ease-in-outrounded-none px-4 py-2 w-[50%] "
             >
               {link.name}
-            </Link>
+            </Button>
           ))}
-          <Button className="w-full bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors duration-300 ease-in-outrounded-none px-4 py-2">
-            <ShoppingCartIcon className="w-5 h-5" />
+          <Button
+            className="w-[50%] bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors duration-300 ease-in-outrounded-none px-4 py-2"
+            onClick={() => setIsCartOpen(true)}
+          >
+            <ShoppingCartIcon className="w-7 h-7" />
+            {carrito.length}
           </Button>
         </div>
       </div>

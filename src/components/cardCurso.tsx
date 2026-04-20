@@ -5,18 +5,8 @@ import { CalendarDaysIcon } from "@heroicons/react/24/outline";
 import { SimpleButton } from "./botones";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { TipoCurso } from "./tipoCurso";
-
-interface Curso {
-  id: string;
-  title: string;
-  imagen: string;
-  fechaInicio: string;
-  precio: number;
-  descuento?: number | undefined;
-  modalidad: string;
-  rating?: number;
-  imagenAlt: string;
-}
+import { useCart } from "@/context/CartContext";
+import { Curso } from "./cursosGrilla";
 
 interface CardCursoProps {
   curso: Curso;
@@ -35,6 +25,8 @@ export const CardCurso = ({ curso, isPriority = false }: CardCursoProps) => {
     id,
     imagenAlt,
   } = curso;
+  const { agregarAlCarrito } = useCart();
+
   return (
     <Card className=" p-0 max-w-[340px] min-h-[450px] flex flex-col mt-4 border-none rounded-lg bg-white overflow-visible transition-all duration-500 cursor-pointer shadow-md hover:shadow-2xl hover:scale-102">
       <div className="relative w-full h-[200px] mb-2">
@@ -91,7 +83,7 @@ export const CardCurso = ({ curso, isPriority = false }: CardCursoProps) => {
         <SimpleButton
           label="carrito de compra"
           className="w-[30%] bg-secondary boder border-solid hover:bg-primary text-white transition-colors duration-300 items-center justify-center flex py-2"
-          onClick={() => console.log(id)}
+          onClick={() => agregarAlCarrito(curso)}
           ariaLabel={`Agregar al carrito de compra del curso ${title}`}
         >
           <ShoppingCartIcon className="w-5 h-5 text-white" /> +

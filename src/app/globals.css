@@ -65,3 +65,7 @@ body {
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.checkbox-group [data-slot="checkbox"] {
+  margin-top: 0 !important;
+}

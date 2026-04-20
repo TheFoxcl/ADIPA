@@ -8,11 +8,11 @@ import { useState } from "react";
 export default function Hero() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <section className="flex flex-col items-center justify-center h-100 py-2 bg-secondary text-white">
-      <h2 className="text-4xl font-bold mb-5 mt-6">
+    <section className="flex flex-col items-center justify-center h-100 py-2 bg-secondary text-white ">
+      <h2 className="text-xl mx-2 lg:mx-0 font-bold mb-5 mt-6 md:text-2xl lg:text-4xl text-center ">
         Cursos de Psicología con Certificado en 2026
       </h2>
-      <span className="text-base text-center">
+      <span className="mx-2 lg:mx-0 text-base text-center">
         Vive la mejor experiencia de aprendizaje y potencia tus conocimientos
         através de nuestros cursos y diplomados.
       </span>
@@ -23,7 +23,7 @@ export default function Hero() {
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
       />
-      <div className="flex flex-wrap justify-center gap-4 mt-6">
+      <div className="hidden lg:flex flex-wrap justify-center gap-4 mt-6 ">
         {opcionesHero.map((opcion: string) => (
           <SimpleButton
             aria-label={`Buscar cursos relacionados con ${opcion}`}
