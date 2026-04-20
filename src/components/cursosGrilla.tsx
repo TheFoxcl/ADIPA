@@ -8,8 +8,8 @@ export interface Curso {
   categoria: string;
   fechaInicio: string;
   precio: number;
-  descuento: number;
-  rating: number;
+  descuento?: number;
+  rating?: number;
   imagen: string;
   imagenAlt: string;
   modalidad: string;

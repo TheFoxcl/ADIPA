@@ -29,7 +29,7 @@ export const CardCurso = ({ curso, isPriority = false }: CardCursoProps) => {
     imagen,
     fechaInicio,
     precio,
-    descuento,
+    descuento = 0,
     modalidad,
     rating,
     id,
