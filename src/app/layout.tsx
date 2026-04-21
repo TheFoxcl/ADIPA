@@ -3,6 +3,7 @@ import { MainNavbar } from "@/components/navbar";
 import { CartProvider } from "@/context/CartContext";
 import { CartDrawer } from "@/components/carrito";
 import { FooterAdipa } from "@/components/footer";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({
   children,
@@ -20,6 +21,7 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
         </CartProvider>
         <FooterAdipa />
+        <Analytics />
       </body>
     </html>
   );
